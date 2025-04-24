@@ -1,8 +1,8 @@
 # .replit
 
-entrypoint = "main.py"
+entrypoint = "app.py"
 
-run = ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
+run = ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
 
 language = "python3"
 modules = ["python-3.11"]
@@ -11,7 +11,7 @@ modules = ["python-3.11"]
 PYTHONUNBUFFERED = "1"
 
 [deployment]
-run = ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
+run = ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
 deploymentTarget = "cloudrun"
 
 [[ports]]
