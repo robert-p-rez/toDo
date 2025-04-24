@@ -17,7 +17,11 @@ class TaskService:
                 break
 
     def get_all_tasks(self):
-        return self.tasks
+        sorted_tasks = sorted(self.tasks, key=lambda x: x.priority)
+        grouped_tasks = {}
+        for i in range(1, 5):
+            grouped_tasks[i] = [task for task in sorted_tasks if task.priority == i]
+        return grouped_tasks
 
     def delete_task(self, task_id):
         self.tasks = [t for t in self.tasks if t.id != task_id]
