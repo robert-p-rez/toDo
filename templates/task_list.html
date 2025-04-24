@@ -1,26 +1,44 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tasks</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
-    <h1>Tasks</h1>
-    <form action="/tasks/add" method="post">
-        <input type="text" name="title" placeholder="New task" required>
-        <button type="submit">Add Task</button>
-    </form>
-    <ul>
-        {% for task in tasks %}
-            <li>
-                {{ task.title }}
-                <form action="/tasks/delete/{{ task.id }}" method="post" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="/">Back</a>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Tasks</h1>
+            <form action="/tasks/add" method="post" class="mb-4">
+                <div class="field has-addons">
+                    <div class="control">
+                        <input class="input" type="text" name="title" placeholder="New task" required>
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-primary">Add Task</button>
+                    </div>
+                </div>
+            </form>
+            <div class="content">
+                {% if tasks %}
+                    <ul>
+                        {% for task in tasks %}
+                            <li class="mb-2">
+                                {{ task.title }}
+                                <form action="/tasks/delete/{{ task.id }}" method="post" style="display:inline;">
+                                    <button type="submit" class="button is-danger is-small">Delete</button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No tasks yet!</p>
+                {% endif %}
+            </div>
+            <a href="/" class="button is-light">Back</a>
+        </div>
+    </section>
 </body>
 </html>
