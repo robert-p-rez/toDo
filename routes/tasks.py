@@ -14,6 +14,8 @@ def add_task():
     priority = int(request.form.get("priority", 4))
     if title:
         task_service.add_task(title, priority)
+        if priority == 1:
+            return redirect("/tasks/?newP1=true")
     return redirect("/tasks/")
 
 @task_bp.route("/update_priority/<int:task_id>", methods=["POST"])

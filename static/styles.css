@@ -1,2 +1,10 @@
 
-/* Using Bulma CSS framework, no custom styles needed */
+@keyframes redPulse {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(255, 0, 0, 0.1); }
+    100% { background-color: transparent; }
+}
+
+.red-pulse {
+    animation: redPulse 2s ease-in-out;
+}

@@ -72,6 +72,20 @@
         </div>
     </section>
 <script>
+        function checkAndAnimateP1() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('newP1') === 'true') {
+                document.body.classList.add('red-pulse');
+                setTimeout(() => {
+                    document.body.classList.remove('red-pulse');
+                }, 2000);
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', checkAndAnimateP1);
+
         function updatePriority(select, taskId) {
             const form = document.createElement('form');
             form.method = 'POST';
