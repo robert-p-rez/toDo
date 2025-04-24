@@ -11,8 +11,15 @@ def view_tasks():
 @task_bp.route("/add", methods=["POST"])
 def add_task():
     title = request.form.get("title")
+    priority = int(request.form.get("priority", 4))
     if title:
-        task_service.add_task(title)
+        task_service.add_task(title, priority)
+    return redirect("/tasks/")
+
+@task_bp.route("/update_priority/<int:task_id>", methods=["POST"])
+def update_priority(task_id):
+    priority = int(request.form.get("priority"))
+    task_service.update_priority(task_id, priority)
     return redirect("/tasks/")
 
 @task_bp.route("/delete/<int:task_id>", methods=["POST"])
