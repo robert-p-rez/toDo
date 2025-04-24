@@ -1,5 +1,14 @@
+# .replit
+
 entrypoint = "main.py"
+
 run = ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
+
+language = "python3"
+modules = ["python-3.11"]
+
+[env]
+PYTHONUNBUFFERED = "1"
 
 [deployment]
 run = ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
@@ -8,3 +17,5 @@ deploymentTarget = "cloudrun"
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[nix]
